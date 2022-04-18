@@ -17,7 +17,7 @@ class Presenter {
   Presenter(int size);
   long timeNow();
   //JS TOP
-  [[noreturn]] void run();
+   int run();
 };
 
 #endif //UNTITLED2__PRESENTER_H_

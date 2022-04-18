@@ -25,47 +25,94 @@ long Presenter::timeNow() {
   return
       std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
 }
-[[noreturn]] void Presenter::run() {
-  model->addFragmentToHead(0, 1);
-  model->addFragmentToHead(0, 1);
-  view->print();
-  int dx = 0;
-  int dy = 1;
-  timer = timeNow();
-  model->addFruitToField();
-  //std::thread thr(ref(drawThread), ref(model), &dx, &dy);
-  while (true) {
-    if (timeNow() - timer >= 1000) {
-      model->move(dx, dy);
-      //model->addFruitToField();
-      //system("cls");
-      view->print();
-      cout << '\n' << '\n';
-      if (_kbhit()) {
-        switch (_getch()) {
-          case 'w': {
-            dx = 0;
-            dy = 1;
-            break;
+int Presenter::run() {
+  bool flag =true;
+  while (flag) {
+    model->addFragmentToHead(0, 1);
+    model->addFragmentToHead(0, 1);
+    view->print();
+    int dx = 0;
+    int dy = 1;
+    timer = timeNow();
+    model->addFruitToField();
+    //std::thread thr(ref(drawThread), ref(model), &dx, &dy);
+    while (model->flag != false) {
+
+      if (timeNow() - timer >= 1000) {
+
+        model->move(dx, dy);
+        //model->addFruitToField();
+        //system("cls");
+        view->print();
+        cout << '\n' << '\n';
+        if (_kbhit()) {
+          switch (_getch()) {
+            case 'w': {
+              dx = 0;
+              dy = 1;
+              break;
+            }
+            case 's': {
+              dx = 0;
+              dy = -1;
+              break;
+            }
+            case 'a': {
+              dx = 1;
+              dy = 0;
+              break;
+            }
+            case 'd': {
+              dx = -1;
+              dy = 0;
+              break;
+            }
           }
-          case 's': {
-            dx = 0;
-            dy = -1;
-            break;
-          }
-          case 'a': {
-            dx = 1;
-            dy = 0;
-            break;
-          }
-          case 'd':{dx = -1;
-            dy = 0;
-          break;}
         }
+        timer = timeNow();
       }
-      timer=timeNow();
+
     }
 
-  }
+    cout << "If you want to restart press 'x'" << '\n'<<"If you want to stop the game press 't'"<<'\n';
+    Sleep(5000);
+    if (_kbhit()) {
+      switch (_getch()) {
+        case 'x': {
+          model = new Model(model->GetSize());
+          view=new View(model);
+          system("cls");
+          Sleep(1000);
 
+
+
+          break;
+        }
+        case 't': {
+
+          cout << "Game over finally" << '\n';
+          Sleep(5000);
+          flag=false;
+          break;
+        }
+      }
+
+    }
+  }
 }
+//if(!model->flag){
+//cout<<"If you want to restart press 'x'"<<'\n';
+//if (_kbhit()) {
+//switch (_getch()) {
+//case 'x': {
+//model = new Model(model->GetSize());
+//break;
+//}
+//case 't':{
+//break;
+//
+//}
+//}
+//
+//}
+//}

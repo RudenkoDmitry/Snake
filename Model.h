@@ -17,7 +17,6 @@ class Model {
     int dx;
     int dy;
 
-
   };
   //Fruit fruit;
   //void fillField();
@@ -28,12 +27,12 @@ class Model {
   int size = 0;
 
  public:
-
+  bool flag = true;
   //void addSnakeToField();
   void addFragmentToTail();
-void addFruitToField();
-  void addFragmentToHead(int dx,int dy);
-  void move(int dx,int dy);
+  void addFruitToField();
+  void addFragmentToHead(int dx, int dy);
+  void move(int dx, int dy);
   Model(int n);
 
   char **GetField() const;
