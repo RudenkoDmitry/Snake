@@ -26,7 +26,7 @@ long Presenter::timeNow() {
       std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
 }
 [[noreturn]] void Presenter::run() {
- // model->addFragmentToHead(0, 1);
+  model->addFragmentToHead(0, 1);
   model->addFragmentToHead(0, 1);
   view->print();
   int dx = 0;
@@ -35,7 +35,7 @@ long Presenter::timeNow() {
   model->addFruitToField();
   //std::thread thr(ref(drawThread), ref(model), &dx, &dy);
   while (true) {
-    if (timeNow() - timer >= 500) {
+    if (timeNow() - timer >= 1000) {
       model->move(dx, dy);
       //model->addFruitToField();
       //system("cls");
