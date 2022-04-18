@@ -26,7 +26,7 @@ long Presenter::timeNow() {
       std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
 }
 int Presenter::run() {
-  bool flag =true;
+  bool flag = true;
   while (flag) {
     model->addFragmentToHead(0, 1);
     model->addFragmentToHead(0, 1);
@@ -74,17 +74,17 @@ int Presenter::run() {
 
     }
 
-    cout << "If you want to restart press 'x'" << '\n'<<"If you want to stop the game press 't'"<<'\n';
+    cout << "If you want to restart press 'x'" << '\n' << "If you want to stop the game press 't'" << '\n';
     Sleep(5000);
     if (_kbhit()) {
       switch (_getch()) {
         case 'x': {
           model = new Model(model->GetSize());
-          view=new View(model);
+          view = new View(model);
           system("cls");
           Sleep(1000);
-
-
+          cout << '\n' << '\n' << '\n' << '\t' << '\t' << "Game started...";
+          Sleep(4000);
 
           break;
         }
@@ -92,7 +92,7 @@ int Presenter::run() {
 
           cout << "Game over finally" << '\n';
           Sleep(5000);
-          flag=false;
+          flag = false;
           break;
         }
       }
