@@ -38,7 +38,7 @@ int Presenter::run() {
     //std::thread thr(ref(drawThread), ref(model), &dx, &dy);
     while (model->flag != false) {
 
-      if (timeNow() - timer >= 1000) {
+      if (timeNow() - timer >= 500) {
 
         model->move(dx, dy);
         //model->addFruitToField();
