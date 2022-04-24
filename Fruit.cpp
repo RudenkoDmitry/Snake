@@ -15,6 +15,12 @@ int Fruit::getx() {
 int Fruit::gety() {
   return y;
 }
+int Fruit::getScore() {
+  return score;
+}
+void Fruit::setScore(int score){
+  this->score=score;
+}
 void Fruit::setRandomValues(int size) {
   x=rand()%size;
   y=rand()%size;

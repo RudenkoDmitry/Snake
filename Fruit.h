@@ -10,10 +10,13 @@ class Fruit {
   Fruit();
   int getx();
   int gety();
+  int getScore();
+  void setScore(int score);
   void setRandomValues(int size);
  private:
   int x;
   int y;
+  int score;
 };
 
 #endif //UNTITLED2__FRUIT_H_

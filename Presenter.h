@@ -12,12 +12,14 @@ class Presenter {
   Model *model;
   View *view;
   long  timer;
+  int maxScore=0;
  public:
   static void drawThread(Model &model, int &dx, int &dy);
   Presenter(int size);
   long timeNow();
   //JS TOP
    int run();
+
 };
 
 #endif //UNTITLED2__PRESENTER_H_

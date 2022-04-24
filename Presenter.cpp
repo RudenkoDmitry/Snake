@@ -74,11 +74,15 @@ int Presenter::run() {
 
     }
 
-    cout << "If you want to restart press 'x'" << '\n' << "If you want to stop the game press 't'" << '\n';
+    cout << "If you want to restart press 'x'" << '\n' << "If you want to stop the game press 't'" << '\n'<<"Your record of score:   "<<maxScore;
     Sleep(5000);
     if (_kbhit()) {
       switch (_getch()) {
         case 'x': {
+          if (model->score>maxScore){
+            maxScore=model->score;
+          }
+
           model = new Model(model->GetSize());
           view = new View(model);
           system("cls");

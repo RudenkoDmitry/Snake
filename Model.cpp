@@ -26,6 +26,7 @@ void Model::addFragmentToTail() {
 void Model::addFruitToField() {
 
   Fruit fruit;
+
   fruit.setRandomValues(size);
   field[fruit.gety()][fruit.getx()] = 'F';
   //ddSnakeToField();
@@ -86,6 +87,7 @@ void Model::move(int dx, int dy) {
     addFragmentToTail();
     field[(snake.getFirst()->value.y - snake.getFirst()->value.dy) % size][(snake.getFirst()->value.x
         - snake.getFirst()->value.dx) % size] = '.';
+    score += 10;
     addFruitToField();
   } else {
 //    int count = 0;

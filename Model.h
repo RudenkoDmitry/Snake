@@ -26,11 +26,14 @@ class Model {
   char **field;
   int size = 0;
 
+
  public:
   bool flag = true;
   //void addSnakeToField();
   void addFragmentToTail();
   void addFruitToField();
+  int score=0;
+
   void addFragmentToHead(int dx, int dy);
   void move(int dx, int dy);
   Model(int n);

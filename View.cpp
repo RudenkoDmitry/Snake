@@ -13,6 +13,7 @@ void View::print() {
     }
     cout << '\n';
   }
+  cout<<"Score: "<<'\t'<<model->score;
 }
 View::View(Model *model) {
   this->model=model;
